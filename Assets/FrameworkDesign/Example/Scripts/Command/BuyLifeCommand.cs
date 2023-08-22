@@ -10,17 +10,14 @@ using UnityEngine;
 
 namespace FrameworkDesign.Example
 {
-    public class StartGameCommand : AbstractCommand
+    public class BuyLifeCommand : AbstractCommand
     {
         protected override void OnExecute()
         {
             var gameModel = this.GetModel<IGameModel>();
 
-            // 重置数据
-            gameModel.KillCount.Value = 0;
-            gameModel.Score.Value = 0;
-
-            this.SendEvent<GameStartEvent>();
+            gameModel.Gold.Value--;
+            gameModel.Life.Value++;
         }
     }
 }

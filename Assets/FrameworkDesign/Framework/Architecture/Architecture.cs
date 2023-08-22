@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using UnityEngine;
 
 /*
  * 创建人：杜
@@ -82,20 +79,6 @@ namespace FrameworkDesign
 
         protected abstract void Init();
 
-        // 获取对象
-        public static T Get<T>() where T : class
-        {
-            MakeSureArchitecture();
-            return mArchitecture.mContainer.Get<T>();
-        }
-
-        // 获取可以使用单例的类
-        public static void Register<T>(T instance)
-        {
-            MakeSureArchitecture();
-            mArchitecture.mContainer.Register<T>(instance); // 这里的 <T> 不能省略，因为 Register<T>(T instance) 中的 <T> 要写接口，(T instance) 中要写实现
-        }
-
         public void RegisterModel<T>(T modelInstance) where T : IModel
         {
             //modelInstance.Architeccture = this;
@@ -106,6 +89,22 @@ namespace FrameworkDesign
                 mModels.Add(modelInstance);
             else
                 modelInstance.Init();
+        }
+
+        public void RegisterUtility<T>(T utilityInstance) where T : IUtility
+        {
+            mContainer.Register<T>(utilityInstance);
+        }
+
+        public void RegisterSystem<T>(T systemInstance) where T : ISystem
+        {
+            systemInstance.SetArchitecture(this);
+            mContainer.Register<T>(systemInstance);
+
+            if (!mInited)
+                mSystems.Add(systemInstance);
+            else
+                systemInstance.Init();
         }
 
         public T GetModel<T>() where T : class, IModel
@@ -122,23 +121,6 @@ namespace FrameworkDesign
         public T GetSystem<T>() where T : class, ISystem
         {
             return mContainer.Get<T>();
-        }
-
-        public void RegisterUtility<T>(T utility) where T : IUtility
-        {
-            mContainer.Register<T>(utility);
-        }
-
-        public void RegisterSystem<T>(T systemInstance) where T : ISystem
-        {
-            //systemInstance.Architeccture = this;
-            systemInstance.SetArchitecture(this);
-            mContainer.Register<T>(systemInstance);
-
-            if (!mInited)
-                mSystems.Add(systemInstance);
-            else
-                systemInstance.Init();
         }
 
         public void SendCommand<T>() where T : ICommand, new()

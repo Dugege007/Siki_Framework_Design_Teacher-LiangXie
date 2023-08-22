@@ -99,14 +99,14 @@ namespace FrameworkDesign
         }
 
         // 首先注册需要一个字典
-        Dictionary<Type,IRegistrations> mEventRegistration=new Dictionary<Type, IRegistrations> ();
+        Dictionary<Type, IRegistrations> mEventRegistration = new Dictionary<Type, IRegistrations>();
 
         // 注册过程
         public IUnRegister Register<T>(Action<T> onEvent)
         {
-            var type=typeof(T);
+            var type = typeof(T);
             IRegistrations registrations;
-            if (mEventRegistration.TryGetValue(type,out registrations))
+            if (mEventRegistration.TryGetValue(type, out registrations))
             {
 
             }
@@ -135,7 +135,7 @@ namespace FrameworkDesign
         // 发送
         public void Send<T>(T e)
         {
-            var type=typeof (T);
+            var type = typeof(T);
             IRegistrations registrations;
             if (mEventRegistration.TryGetValue(type, out registrations))
             {

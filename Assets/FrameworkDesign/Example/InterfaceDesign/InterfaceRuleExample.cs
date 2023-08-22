@@ -14,13 +14,11 @@ namespace FrameworkDesign.Example
     {
         public class OnlyCanDo1 : ICanDoSomeThing1
         {
-            //public CanDoEverything CanDoEverything { get; }
             CanDoEverything IHaveEvrything.CanDoEverything { get; } = new CanDoEverything();
         }
 
         public class OnlyCanDo23 : ICanDoSomeThing2, ICanDoSomeThing3
         {
-            //public CanDoEverything CanDoEverything { get; }
             CanDoEverything IHaveEvrything.CanDoEverything { get; } = new CanDoEverything();
         }
 
@@ -28,7 +26,6 @@ namespace FrameworkDesign.Example
         {
             var onlyCanDo1 = new OnlyCanDo1();
             // 如果想调用Do其他事情，可以像下面一样写
-            //IHaveEvrything onlyCanDo1 = new OnlyCanDo1();
             onlyCanDo1.DoSomething1();
 
             var onlyCanDo23 = new OnlyCanDo23();

@@ -12,10 +12,6 @@ namespace CounterApp
     {
         protected override void OnExecute()
         {
-            //CounterModel.Instance.Count.Value--;
-            //CounterApp.Get<ICounterModel>().Count.Value--;
-
-            //GetArchiteccture().GetModel<ICounterModel>().Count.Value--;
             this.GetModel<ICounterModel>().Count.Value--;
         }
     }

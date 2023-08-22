@@ -13,7 +13,7 @@ using UnityEngine;
  * 创建时间：
  */
 
-namespace FrameworkDesign.Example
+namespace FrameworkDesign.DIPExample
 {
     public class DIPExample : MonoBehaviour
     {

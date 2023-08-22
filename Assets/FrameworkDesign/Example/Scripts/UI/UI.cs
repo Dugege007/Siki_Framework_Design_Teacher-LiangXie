@@ -11,29 +11,64 @@ using UnityEngine;
 
 namespace FrameworkDesign.Example
 {
-    public class UI : MonoBehaviour,IController
+    public class UI : MonoBehaviour, IController
     {
-        private void Start()
-        {
-            //GamePassEvent.Register(OnGamePass);
-            this.RegisterEvent<GamePassEvent>(OnGamePass);
-        }
-
-        private void OnGamePass(GamePassEvent e)
-        {
-            // 交互逻辑
-            transform.Find("Canvas/GamePassPanel").gameObject.SetActive(true);
-        }
-
-        private void OnDestroy()
-        {
-            //GamePassEvent.UnRegister(OnGamePass);
-            this.UnRegisterEvent<GamePassEvent>(OnGamePass);
-        }
+        private GameObject mGameStartPanel;
+        private GameObject mGamePanel;
+        private GameObject mGamePassPanel;
+        private GameObject mGameOverPanel;
 
         public IArchitecture GetArchiteccture()
         {
             return PointGame.Interface;
+        }
+
+        private void Awake()
+        {
+            mGameStartPanel = transform.Find("Canvas/GameStartPanel").gameObject;
+            mGamePanel = transform.Find("Canvas/GamePanel").gameObject;
+            mGamePassPanel = transform.Find("Canvas/GamePassPanel").gameObject;
+            mGameOverPanel = transform.Find("Canvas/GameOverPanel").gameObject;
+        }
+
+        private void Start()
+        {
+            this.RegisterEvent<GameStartEvent>(OnGameStart);
+            this.RegisterEvent<GamePassEvent>(OnGamePass);
+            this.RegisterEvent<OnCountDownEndEvent>(OnGameOver);
+            this.RegisterEvent<ReStartEvent>(OnReStart).UnRegisterWhenGameObjectDestroyed(gameObject);  // 使用这种方式不用在 OnDestroy 中再注销一遍了
+        }
+
+
+        private void OnGameStart(GameStartEvent e)
+        {
+            mGamePanel.SetActive(true);
+        }
+
+        private void OnGamePass(GamePassEvent e)
+        {
+            mGamePassPanel.SetActive(true);
+            mGamePanel.SetActive(false);
+        }
+
+        private void OnGameOver(OnCountDownEndEvent e)
+        {
+            mGameOverPanel.SetActive(true);
+            mGamePanel.SetActive(false);
+        }
+
+        private void OnReStart(ReStartEvent e)
+        {
+            // 交互逻辑
+            mGameStartPanel.SetActive(true);
+
+        }
+
+        private void OnDestroy()
+        {
+            this.UnRegisterEvent<GameStartEvent>(OnGameStart);
+            this.UnRegisterEvent<GamePassEvent>(OnGamePass);
+            this.UnRegisterEvent<OnCountDownEndEvent>(OnGameOver);
         }
     }
 }

@@ -13,28 +13,6 @@ namespace CounterApp
 {
     public class CounterApp : Architecture<CounterApp>
     {
-        //private static IOCContainer mContainer;
-
-        //private static void MakeSureContainer()
-        //{
-        //    if (mContainer == null)
-        //    {
-        //        mContainer = new IOCContainer();
-        //        Init();
-        //    }
-        //}
-
-        //private static void Init()
-        //{
-        //    mContainer.Register(new CounterModel());
-        //}
-
-        //public static T Get<T>() where T : class
-        //{
-        //    MakeSureContainer();
-        //    return mContainer.Get<T>();
-        //}
-
         protected override void Init()
         {
             // System 层
@@ -45,7 +23,6 @@ namespace CounterApp
 
             // Utility （工具、基础设施）层
             RegisterUtility<IStorage>(new PlayerPrefsStorage());
-            //Register<IStorage>(new EditorPrefsStorage());
         }
     }
 }

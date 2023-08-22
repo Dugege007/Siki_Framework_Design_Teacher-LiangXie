@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace FrameworkDesign
 {
-    public interface ISystem : IBelongToArchitecture, ICanSetArchitecture, ICanGetModel, ICanGetUtility,ICanRegisterEvent,ICanSendEvent
+    public interface ISystem : IBelongToArchitecture, ICanSetArchitecture, ICanGetSystem, ICanGetModel, ICanGetUtility, ICanRegisterEvent, ICanSendEvent
     {
         void Init();
     }

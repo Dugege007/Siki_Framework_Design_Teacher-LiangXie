@@ -20,8 +20,6 @@ namespace CounterApp.Editor
         [MenuItem("EditorConterApp/Open")]
         static void Open()
         {
-            //CounterApp.Register<IStorage>(new EditorPrefsStorage());
-
             // 注册后打个补丁
             CounterApp.OnRegisterPatch += app => 
             { 
@@ -43,20 +41,14 @@ namespace CounterApp.Editor
         {
             if (GUILayout.Button("+"))
             {
-                //new AddCountCommand().Execute();
-                //GetArchiteccture().SendCommand<AddCountCommand>();
                 this.SendCommand<AddCountCommand>();
             }
 
             // 由于是实时渲染的，所以这里直接这样写
-            //GUILayout.Label(CounterModel.Instance.Count.Value.ToString());
-            //GUILayout.Label(CounterApp.Get<CounterModel>().Count.Value.ToString());
-            GUILayout.Label(CounterApp.Get<ICounterModel>().Count.Value.ToString());
+            GUILayout.Label(this.GetModel<ICounterModel>().Count.Value.ToString());
 
             if (GUILayout.Button("-"))
             {
-                //new SubCountCommand().Execute();
-                //GetArchiteccture().SendCommand<SubCountCommand>();
                 this.SendCommand<SubCountCommand>();
             }
         }

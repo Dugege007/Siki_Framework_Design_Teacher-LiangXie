@@ -23,7 +23,7 @@ namespace FrameworkDesign
             return self.GetArchiteccture().RegisterEvent<T>(onEvent);
         }
 
-        public static void  UnRegisterEvent<T>(this ICanRegisterEvent self, Action<T> onEvent)
+        public static void UnRegisterEvent<T>(this ICanRegisterEvent self, Action<T> onEvent)
         {
             self.GetArchiteccture().UnRegisterEvent<T>(onEvent);
         }

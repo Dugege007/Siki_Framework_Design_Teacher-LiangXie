@@ -30,13 +30,49 @@ namespace FrameworkDesign
                 {
                     mValue = value;
 
-                    OnValueChanged?.Invoke(mValue);
+                    mOnValueChanged?.Invoke(mValue);
                     // 自身数值发生变化时，通知观察者更新界面
                     // 数值驱动
                 }
             }
         }
 
-        public Action<T> OnValueChanged;
+        //public Action<T> OnValueChanged; // += -= 事件不是很方便
+        // 所以使用下面方法
+
+        private Action<T> mOnValueChanged = v => { };    // + -
+
+        // 注册
+        public IUnRegister RegisterOnValueChanged(Action<T> onValueChanged) // +
+        {
+            mOnValueChanged += onValueChanged;
+            return new BindablePropertyUnregister<T>()
+            {
+                BindableProperty = this,
+                OnValueChanged = onValueChanged
+            };
+        }
+
+        // 注销
+        public void UnRegisterOnValueChanged(Action<T> onValueChanged)  // +
+        {
+            mOnValueChanged -= onValueChanged;
+        }
+    }
+
+    public class BindablePropertyUnregister<T> : IUnRegister where T : IEquatable<T>    // +
+    {
+        public BindableProperty<T> BindableProperty { get; set; }
+
+        public Action<T> OnValueChanged { get; set; }
+
+        public void UnRegister()
+        {
+            BindableProperty.UnRegisterOnValueChanged(OnValueChanged);
+
+            // 更好的方式
+            BindableProperty = null;
+            OnValueChanged = null;
+        }
     }
 }
