@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using QFramework;
 
 /*
  * 创建人：杜
@@ -9,7 +5,7 @@ using QFramework;
  * 创建时间：
  */
 
-namespace FrameworkDesign.Example
+namespace QFramework.Example
 {
     public class PointGame : Architecture<PointGame>
     {

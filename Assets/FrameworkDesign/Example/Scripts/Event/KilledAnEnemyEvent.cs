@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 /*
  * 创建人：杜
@@ -8,7 +5,7 @@ using UnityEngine;
  * 创建时间：
  */
 
-namespace FrameworkDesign.Example
+namespace QFramework.Example
 {
     public class KilledAnEnemyEvent
     {

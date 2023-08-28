@@ -3,7 +3,6 @@ using UnityEditor;
 #endif
 
 using UnityEngine;
-using QFramework;
 
 /*
  * 创建人：杜
@@ -14,7 +13,7 @@ using QFramework;
  * 创建时间：
  */
 
-namespace FrameworkDesign.DIPExample
+namespace QFramework.DIPExample
 {
     public class DIPExample : MonoBehaviour
     {

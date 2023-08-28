@@ -14,7 +14,7 @@ using UnityEngine;
  * 创建时间：
  */
 
-namespace FrameworkDesign
+namespace QFramework
 {
     public interface ICanSayHello
     {

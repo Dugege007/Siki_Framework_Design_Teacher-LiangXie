@@ -1,4 +1,3 @@
-using QFramework;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +7,7 @@ using UnityEngine.UI;
  * 创建时间：
  */
 
-namespace FrameworkDesign.Example
+namespace QFramework.Example
 {
     public class GameStartPanel : MonoBehaviour, IController
     {

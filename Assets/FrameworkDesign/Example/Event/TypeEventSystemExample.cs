@@ -1,7 +1,3 @@
-using QFramework;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -10,7 +6,7 @@ using UnityEngine;
  * 创建时间：
  */
 
-namespace FrameworkDesign.Example
+namespace QFramework.Example
 {
     public class TypeEventSystemExample : MonoBehaviour
     {
