@@ -33,7 +33,7 @@ namespace QFramework.Example
             this.RegisterEvent<GameStartEvent>(OnGameStart);
             this.RegisterEvent<GamePassEvent>(OnGamePass);
             this.RegisterEvent<OnCountDownEndEvent>(OnGameOver);
-            this.RegisterEvent<ReStartEvent>(OnReStart).UnRegisterWhenGameObjectDestroyed(gameObject);  // 使用这种方式不用在 OnDestroy 中再注销一遍了
+            this.RegisterEvent<ReStartEvent>(OnReStart).UnRegisterWhenDestroyed(gameObject);  // 使用这种方式不用在 OnDestroy 中再注销一遍了
         }
 
 

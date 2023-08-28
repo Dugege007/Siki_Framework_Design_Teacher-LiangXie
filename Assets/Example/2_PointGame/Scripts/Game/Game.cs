@@ -29,9 +29,9 @@ namespace QFramework.Example
         private void Start()
         {
             // UnRegisterWhenGameObjectDestroyed 使用这种方式不用在 OnDestroy 中再注销一遍了
-            this.RegisterEvent<GameStartEvent>(OnGameStart).UnRegisterWhenGameObjectDestroyed(gameObject);
-            this.RegisterEvent<OnCountDownEndEvent>(OnGameOver).UnRegisterWhenGameObjectDestroyed(gameObject);
-            this.RegisterEvent<GamePassEvent>(OnGamePass).UnRegisterWhenGameObjectDestroyed(gameObject);
+            this.RegisterEvent<GameStartEvent>(OnGameStart).UnRegisterWhenDestroyed(gameObject);
+            this.RegisterEvent<OnCountDownEndEvent>(OnGameOver).UnRegisterWhenDestroyed(gameObject);
+            this.RegisterEvent<GamePassEvent>(OnGamePass).UnRegisterWhenDestroyed(gameObject);
         }
 
         private void OnGameStart(GameStartEvent e)

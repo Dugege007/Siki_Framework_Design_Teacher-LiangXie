@@ -27,14 +27,14 @@ namespace QFramework.Example
                 // 注册完之后，可以使用扩展方法，将当前 gameObject 传入
                 // 表示当前游戏物体销毁时会自动注销前面注册的事件
                 // 非常方便！
-            }).UnRegisterWhenGameObjectDestroyed(gameObject);
+            }).UnRegisterWhenDestroyed(gameObject);
 
             mTypeEventSystem.Register<IEventGroup>(e =>
             {
                 // 输出事件类型
                 Debug.Log("IEventGroup: " + e.GetType());
 
-            }).UnRegisterWhenGameObjectDestroyed(gameObject);
+            }).UnRegisterWhenDestroyed(gameObject);
         }
 
         private void Update()

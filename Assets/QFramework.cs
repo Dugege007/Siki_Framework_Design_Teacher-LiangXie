@@ -970,7 +970,7 @@ namespace QFramework
         /// <remarks>
         /// 用于简化注销事件的操作。
         /// </remarks>
-        public static void UnRegisterWhenGameObjectDestroyed(this IUnRegister unRegister, GameObject obj)
+        public static void UnRegisterWhenDestroyed(this IUnRegister unRegister, GameObject obj)
         {
             var trigger = obj.GetComponent<UnRegisterDestoryTrigger>();
 
