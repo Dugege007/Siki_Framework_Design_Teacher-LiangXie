@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using QFramework;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +21,7 @@ namespace FrameworkDesign.Example
         private Text mGoldText;
         private Button mBuyLifeBtn;
 
-        public IArchitecture GetArchiteccture()
+        public IArchitecture GetArchitecture()
         {
             return PointGame.Interface;
         }
@@ -55,8 +53,8 @@ namespace FrameworkDesign.Example
                 this.SendCommand<BuyLifeCommand>();
             });
 
-            mGameModel.Life.RegisterOnValueChanged(OnLifeValueChanged);
-            mGameModel.Gold.RegisterOnValueChanged(OnGoldValueChanged);
+            mGameModel.Life.Register(OnLifeValueChanged);
+            mGameModel.Gold.Register(OnGoldValueChanged);
 
             // 第一次需要调先更新一下
             mBestScoreText.text = "最高分：" + mGameModel.BestScore.Value;
@@ -85,8 +83,8 @@ namespace FrameworkDesign.Example
 
         private void OnDestroy()
         {
-            mGameModel.Gold.UnRegisterOnValueChanged(OnGoldValueChanged);
-            mGameModel.Life.UnRegisterOnValueChanged(OnLifeValueChanged);
+            mGameModel.Gold.UnRegister(OnGoldValueChanged);
+            mGameModel.Life.UnRegister(OnLifeValueChanged);
             mGameModel = null;
         }
     }

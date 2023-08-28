@@ -1,4 +1,5 @@
 using UnityEngine;
+using QFramework;
 
 /*
  * 创建人：杜
@@ -10,7 +11,7 @@ namespace FrameworkDesign.Example
 {
     public class ErrorArea : MonoBehaviour, IController
     {
-        public IArchitecture GetArchiteccture()
+        public IArchitecture GetArchitecture()
         {
             return PointGame.Interface;
         }

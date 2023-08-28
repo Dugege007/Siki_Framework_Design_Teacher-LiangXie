@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using QFramework;
 
 /*
  * 创建人：杜
@@ -23,7 +20,7 @@ namespace FrameworkDesign.Example
         private Text mGoldText;
         private Text mRemainTimeText;
 
-        public IArchitecture GetArchiteccture()
+        public IArchitecture GetArchitecture()
         {
             return PointGame.Interface;
         }
@@ -41,9 +38,9 @@ namespace FrameworkDesign.Example
 
         private void Start()
         {
-            mGameModel.Score.RegisterOnValueChanged(OnScoreValueChanged);
-            mGameModel.Life.RegisterOnValueChanged(OnLifeValueChanged);
-            mGameModel.Gold.RegisterOnValueChanged(OnGoldValueChanged);
+            mGameModel.Score.Register(OnScoreValueChanged);
+            mGameModel.Life.Register(OnLifeValueChanged);
+            mGameModel.Gold.Register(OnGoldValueChanged);
 
             OnScoreValueChanged(mGameModel.Score.Value);
             OnLifeValueChanged(mGameModel.Life.Value);
@@ -79,9 +76,9 @@ namespace FrameworkDesign.Example
 
         private void OnDestroy()
         {
-            mGameModel.Score.UnRegisterOnValueChanged(OnScoreValueChanged);
-            mGameModel.Life.UnRegisterOnValueChanged(OnLifeValueChanged);
-            mGameModel.Gold.UnRegisterOnValueChanged(OnGoldValueChanged);
+            mGameModel.Score.UnRegister(OnScoreValueChanged);
+            mGameModel.Life.UnRegister(OnLifeValueChanged);
+            mGameModel.Gold.UnRegister(OnGoldValueChanged);
 
             mGameModel = null;
             mCountDownSystem = null;

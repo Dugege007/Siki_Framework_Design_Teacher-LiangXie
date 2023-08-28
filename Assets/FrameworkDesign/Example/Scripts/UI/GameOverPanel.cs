@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using QFramework;
 
 /*
  * 创建人：杜
@@ -13,7 +14,7 @@ namespace FrameworkDesign.Example
     {
         private Button mBackBtn;
 
-        public IArchitecture GetArchiteccture()
+        public IArchitecture GetArchitecture()
         {
             return PointGame.Interface;
         }

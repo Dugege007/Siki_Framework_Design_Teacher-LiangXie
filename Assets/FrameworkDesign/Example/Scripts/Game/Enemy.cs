@@ -1,6 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
+using QFramework;
 
 /*
  * 创建人：杜
@@ -16,7 +15,7 @@ namespace FrameworkDesign.Example
     // View Controller 层
     public class Enemy : MonoBehaviour, IController
     {
-        IArchitecture IBelongToArchitecture.GetArchiteccture()
+        public IArchitecture GetArchitecture()
         {
             return PointGame.Interface;
         }

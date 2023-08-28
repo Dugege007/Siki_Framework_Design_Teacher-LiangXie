@@ -1,4 +1,4 @@
-using FrameworkDesign;
+using QFramework;
 using UnityEngine;
 
 /*
@@ -26,7 +26,7 @@ namespace CounterApp
             // 成就是否解锁还可以用 storage 存储起来
 
             // 监听一下点击次数的变更事件
-            counterModel.Count.RegisterOnValueChanged(newCount =>
+            counterModel.Count.Register(newCount =>
             {
                 if (previousCount < 9 && newCount >= 9 && !count9Unlock)
                 {

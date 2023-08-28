@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using QFramework;
 
 /*
  * 创建人：杜
@@ -39,13 +37,13 @@ namespace FrameworkDesign.Example
             // 读取存储的数据
             BestScore.Value = storage.LoadInt(nameof(BestScore), 0);
             // 注册事件
-            BestScore.RegisterOnValueChanged(v => storage.SaveInt(nameof(BestScore), v));
+            BestScore.Register(v => storage.SaveInt(nameof(BestScore), v));
 
             Life.Value = storage.LoadInt(nameof(Life), 3);
-            Life.RegisterOnValueChanged(v => storage.SaveInt(nameof(Life), v));
+            Life.Register(v => storage.SaveInt(nameof(Life), v));
 
             Gold.Value = storage.LoadInt(nameof(Gold), 0);
-            Gold.RegisterOnValueChanged(v => storage.SaveInt(nameof(Gold), v));
+            Gold.Register(v => storage.SaveInt(nameof(Gold), v));
         }
     }
 }

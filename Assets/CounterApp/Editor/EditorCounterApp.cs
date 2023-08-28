@@ -1,4 +1,4 @@
-using FrameworkDesign;
+using QFramework;
 using UnityEditor;
 using UnityEngine;
 
@@ -32,7 +32,7 @@ namespace CounterApp.Editor
             window.Show();
         }
 
-        IArchitecture IBelongToArchitecture.GetArchiteccture()
+        public IArchitecture GetArchitecture()
         {
             return CounterApp.Interface;
         }
