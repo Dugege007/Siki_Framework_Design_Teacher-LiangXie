@@ -7,7 +7,7 @@ using UnityEngine;
  * 功能说明：Unity编辑器扩展 EditorCounterApp
  * 
  * 在使用 Command 将 交互逻辑 与 表现逻辑 分离后，可以更加灵活的使用 Model 模块，提高底层代码的复用率
- * 比如此 Unity编辑器扩展
+ * 比如此 Unity 编辑器扩展
  * 使用 Command 还可以提高代码可读性和维护性，比如别人一看到 new AddCountCommand().Execute(); 这句代码就知道是干嘛的了
  * 
  * 创建时间：
